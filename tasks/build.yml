@@ -1,3 +1,30 @@
+- name: Install the rpm repo's key
+  ansible.builtin.rpm_key:
+    state: present
+    key: "{{ rpm_repo_key }}"
+  when: ansible_os_family == "RedHat"
+
+- name: Install the rpm repo
+  ansible.builtin.package:
+    #name: "{{ rpm_repo_url }}"
+    name:  https://yum.osc.edu/ondemand/latest/ondemand-release-web-latest-1-8.el9.noarch.rpm
+    state: present
+    disable_gpg_check: "{{ disable_gpg_check_rpm_repo | bool }}"
+  when: ansible_os_family == "RedHat" and not ood_use_exiting_repo_file
+
+- name: Enable epel
+  ansible.builtin.package:
+    name: 'epel-release'
+    state: present
+  when: ansible_os_family == "RedHat" and not ood_use_exiting_repo_file
+
+- name: Install additional packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  loop: ["@ruby:3.1", ondemand-nginx, ondemand-passenger, 
+         ondemand-gems, lua-posix, mod_ssl,"@nodejs:20"]
+
 - name: Make a tmp staging directory
   ansible.builtin.file:
     path: "{{ ood_source_dir }}"
@@ -18,7 +45,7 @@
   changed_when: true
 
 - name: Build the project (this will take some time)
-  ansible.builtin.command: "rake build -mj$(nproc) > build.out 2>&1"
+  ansible.builtin.command: "rake build -mj$(nproc)"
   args:
     chdir: "{{ ood_source_dir }}"
   poll: 30

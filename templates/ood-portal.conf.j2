@@ -78,9 +78,11 @@ Listen {{ addr }}
   OIDCSessionMaxDuration {{ oidc_session_max_duration }}
   OIDCStateMaxNumberOfCookies {{ oidc_state_max_number_of_cookies }}
   OIDCCookieSameSite {{ oidc_cookie_same_site }}
+{% if oidc_settings is defined %}
 {% for setting in oidc_settings %}
   {{ setting }}
 {% endfor %}
+{% endif %}
 {% endif %}
 
   # Lua configuration

@@ -1,4 +1,10 @@
 ---
+apache_package_name: httpd
+apache_service_name: httpd
+
+apache_etc_dir: "/etc/{{ apache_service_name }}"
+apache_conf_dir: "{{ apache_etc_dir }}/conf.d"
+
 os_dependencies:
 - redhat-rpm-config
 - libnsl

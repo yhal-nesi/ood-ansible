@@ -82,19 +82,19 @@
 - name: Make passenger_native_support.so Makefile
   ansible.builtin.command: ruby {{ passenger_base_dir }}/src/ruby_native_extension/extconf.rb
   args:
-    chdir: "{{ tmpdir.stdout }}"
+    chdir: "{{ tmpdir.path }}"
   become: true
   changed_when: true
 
 - name: Make the passenger_native_support.so
   community.general.make:
-    chdir: "{{ tmpdir.stdout }}"
+    chdir: "{{ tmpdir.path }}"
   become: true
   changed_when: true
 
 - name: Move passenger_native_support.so to support libraries
   ansible.builtin.copy:
-    src: "{{ tmpdir.stdout }}/passenger_native_support.so"
+    src: "{{ tmpdir.path }}/passenger_native_support.so"
     dest:  "{{ ruby_lib_dir }}/passenger_native_support.so"
     owner: root
     group: root
@@ -104,5 +104,5 @@
 
 - name: Cleanup tmp dir
   ansible.builtin.file:
-    path: "{{ tmpdir.stdout }}"
+    path: "{{ tmpdir.path }}"
     state: absent
