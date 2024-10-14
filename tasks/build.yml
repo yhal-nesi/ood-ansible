@@ -22,7 +22,7 @@
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
-  loop: ["@ruby:3.0", ondemand-nginx, ondemand-passenger, 
+  loop: ["ruby", ondemand-nginx, ondemand-passenger, 
          ondemand-gems, lua-posix, mod_ssl,"@nodejs:20"]
 
 - name: Make a tmp staging directory
