@@ -62,6 +62,17 @@
     group: root
     mode: 'u=rw,g=r,o=r'
   loop: "{{ ood_base_apps }}"
+
+- name: Setup vendor bundle for dashboard
+  ansible.builtin.command: 
+    cmd: "./bin/bundle config path --local vendor/bundle"
+    chdir: "/var/www/ood/apps/sys/dashboard"
+
+- name: Copy dashboard master key
+  copy:
+    dest: "/var/www/ood/apps/sys/dashboard/config/master.key"
+    content: |
+        326da484da08cc8b495fa432d0300596
   
 - name: Build dashboard
   ansible.builtin.command: 
