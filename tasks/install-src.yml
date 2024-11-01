@@ -64,7 +64,7 @@
   loop: "{{ ood_base_apps }}"
 
 - name: Setup vendor bundle for dashboard
-  ansible.builtin.command: 
+  ansible.builtin.command:
     cmd: "./bin/bundle config path --local vendor/bundle"
     chdir: "/var/www/ood/apps/sys/dashboard"
 
@@ -83,15 +83,15 @@
     cmd: "./bin/setup"
     chdir: "/var/www/ood/apps/sys/dashboard"
 
-- name: Re-compile dashboard javascript
-  ansible.builtin.command: 
-    cmd: "./bin/recompile_js"
-    chdir: "/var/www/ood/apps/sys/dashboard"
+#- name: Re-compile dashboard javascript
+#  ansible.builtin.command: 
+#    cmd: "./bin/recompile_js"
+#    chdir: "/var/www/ood/apps/sys/dashboard"
 
-- name: Bundle install for dashboard
-  ansible.builtin.command:
-    cmd: "bundle install"
-    chdir: "/var/www/ood/apps/sys/dashboard"
+#- name: Bundle install for dashboard
+#  ansible.builtin.command:
+#    cmd: "bundle install"
+#    chdir: "/var/www/ood/apps/sys/dashboard"
 
 - name: Make version file
   ansible.builtin.copy:
