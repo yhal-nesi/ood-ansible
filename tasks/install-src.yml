@@ -68,11 +68,15 @@
     cmd: "./bin/bundle config path --local vendor/bundle"
     chdir: "/var/www/ood/apps/sys/dashboard"
 
-- name: Copy dashboard master key
-  copy:
-    dest: "/var/www/ood/apps/sys/dashboard/config/master.key"
-    content: |
-        326da484da08cc8b495fa432d0300596
+- name: Setup dashboard credentials
+  ansible.builtin.shell: 
+    cmd: "echo 'secret_key_base: 95fa432d0300596'| EDITOR=cat ./bin/rails credentials:edit --environment=production"
+    chdir: "/var/www/ood/apps/sys/dashboard"
+
+#  copy:
+#    dest: "/var/www/ood/apps/sys/dashboard/config/master.key"
+#    content: |
+#        326da484da08cc8b495fa432d0300596
   
 - name: Build dashboard
   ansible.builtin.command: 
