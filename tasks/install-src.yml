@@ -68,6 +68,11 @@
     cmd: "./bin/bundle config path --local vendor/bundle"
     chdir: "/var/www/ood/apps/sys/dashboard"
 
+- name: Bundle install for dashboard
+  ansible.builtin.command:
+    cmd: "bundle install"
+    chdir: "/var/www/ood/apps/sys/dashboard"
+
 - name: Setup dashboard credentials
   ansible.builtin.shell: 
     cmd: "echo 'secret_key_base: 95fa432d0300596'| EDITOR=cat ./bin/rails credentials:edit --environment=production"
@@ -83,15 +88,10 @@
     cmd: "./bin/setup"
     chdir: "/var/www/ood/apps/sys/dashboard"
 
-#- name: Re-compile dashboard javascript
-#  ansible.builtin.command: 
-#    cmd: "./bin/recompile_js"
-#    chdir: "/var/www/ood/apps/sys/dashboard"
-
-#- name: Bundle install for dashboard
-#  ansible.builtin.command:
-#    cmd: "bundle install"
-#    chdir: "/var/www/ood/apps/sys/dashboard"
+- name: Re-compile dashboard javascript
+  ansible.builtin.command: 
+    cmd: "./bin/recompile_js"
+    chdir: "/var/www/ood/apps/sys/dashboard"
 
 - name: Make version file
   ansible.builtin.copy:
