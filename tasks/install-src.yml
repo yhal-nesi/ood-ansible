@@ -87,6 +87,8 @@
   ansible.builtin.command: 
     cmd: "./bin/setup"
     chdir: "/var/www/ood/apps/sys/dashboard"
+  environment:
+    RAILS_ENV: production
 
 - name: Re-compile dashboard javascript
   ansible.builtin.command: 
