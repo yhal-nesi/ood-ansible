@@ -91,10 +91,10 @@
   environment:
     RAILS_ENV: production
 
-- name: Re-compile dashboard javascript
-  ansible.builtin.command: 
-    cmd: "./bin/recompile_js"
-    chdir: "/var/www/ood/apps/sys/dashboard"
+#- name: Re-compile dashboard javascript
+#  ansible.builtin.command: 
+#    cmd: "./bin/recompile_js"
+#    chdir: "/var/www/ood/apps/sys/dashboard"
 
 - name: Make version file
   ansible.builtin.copy:
