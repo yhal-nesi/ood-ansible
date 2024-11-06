@@ -74,10 +74,10 @@
     chdir: "/var/www/ood/apps/sys/dashboard"
 
 - name: Setup dashboard credentials
-  ansible.builtin.shell: 
-    cmd: |
-      echo 'secret_key_base: "95fa432d0300596"'| EDITOR=cat ./bin/rails credentials:edit --environment=production
-    chdir: "/var/www/ood/apps/sys/dashboard"
+  copy:
+    dest: "/var/www/ood/apps/sys/dashboard/config/credentials.yml.enc" 
+    content: |
+      7TfpCaIXZw4Tjv8AZfpkCufRJiMddk5x6lgyx1mI2h/9003fiTVWBffrA9nrHmhLknEnqZp/VF+bNDKXFuQEOfdJj5klwvxio2JhOmtS35lO2U7S/WJj4qOfbBkJvCMQOPau4YXyA4zJwVO6XpADBlMcc/2/jkbaWaHB/+J4JydSXEIy5R6D54jYkZMCbTU1c2fqnqnyQezTRa6LPtTJ7d02pzo6ydgpyZQ6akluTQzIUveKc4NYzJ6vY6xQOPk=--ARGHAv10avtSIUkY--PjG59x07tD/LnvFmzPgg2g==
 
 #  copy:
 #    dest: "/var/www/ood/apps/sys/dashboard/config/master.key"
