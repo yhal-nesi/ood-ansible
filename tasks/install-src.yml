@@ -77,12 +77,11 @@
   copy:
     dest: "/var/www/ood/apps/sys/dashboard/config/credentials.yml.enc" 
     content: |
-      7TfpCaIXZw4Tjv8AZfpkCufRJiMddk5x6lgyx1mI2h/9003fiTVWBffrA9nrHmhLknEnqZp/VF+bNDKXFuQEOfdJj5klwvxio2JhOmtS35lO2U7S/WJj4qOfbBkJvCMQOPau4YXyA4zJwVO6XpADBlMcc/2/jkbaWaHB/+J4JydSXEIy5R6D54jYkZMCbTU1c2fqnqnyQezTRa6LPtTJ7d02pzo6ydgpyZQ6akluTQzIUveKc4NYzJ6vY6xQOPk=--ARGHAv10avtSIUkY--PjG59x07tD/LnvFmzPgg2g==
-
-#  copy:
-#    dest: "/var/www/ood/apps/sys/dashboard/config/master.key"
-#    content: |
-#        326da484da08cc8b495fa432d0300596
+      1ETaGcR92AtdIgAl8qQ+W5RUPlPcxBZoVH3WH0olWnYwcFQZnrTXrVwIKKRbADJpIbZy2pEkmF9HYdzi+GCvG7lRVtjQ+MjVyJtsn/VlwS8BZZ2YDPFz1qLVncJnPYynVb4xTU9WgCqTr+a9vH+XaPAZF0iqI6UoI6yOaybWY+xnd0aDoK3hf2q3zRUOiaCaifQlxjxkobno+LZRUTypnA6mKKf2Rox9V894StSGO/3aEDORglKfTYNPnx5vkLkeunlKOnYCGHkvd6490h1tK4OBoKhOqZ7UUBw0qM/0T/Jy4rJahcPr4PsxV5SulsdRirXSXsGfEUZRdKbSCIT+MLrV+Ugta6UTWxWXMQAF+BYvMYR3wfDXw6s8VYxMIAg962tf3AiXDLLJdAbayNXTN7eqDAyF/pWeaZC7--7JLRMdWRnU8tWyPI--FBK1iaidARrlA24mpb/g9Q==
+  copy:
+    dest: "/var/www/ood/apps/sys/dashboard/config/master.key"
+    content: |
+        7d0a0b725d801aa94b3c76b7c60221fd
   
 - name: Build dashboard
   ansible.builtin.command: 
