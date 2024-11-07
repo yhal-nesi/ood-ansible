@@ -89,6 +89,7 @@
     chdir: "/var/www/ood/apps/sys/dashboard"
   environment:
     RAILS_ENV: production
+    SECRET_KEY_BASE: 460cdca8753de6444a2b4d3be5eddb0325060549630503537f5fde8981801a489248631dff133011ff0eaf66d4d3620ca00785e57110254d258144a42f6a093e
 
 #- name: Re-compile dashboard javascript
 #  ansible.builtin.command: 
